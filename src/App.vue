@@ -29,11 +29,12 @@
             <option value="default" disabled>Selectionner une valeur</option>
             <option value="male">Homme</option>
             <option value="female">Femme</option>
-            <option value="other">Autre</option>
+            <option value="other">Autres</option>
           </select>
         </div>
       </div>
     </div>
+    <!-- Deuxième  -->
     <hr>
     <h3>Ma fiche perso</h3>
     <div class="row">
@@ -51,7 +52,7 @@
     <div class="row">
       <div class="col-6">
         <div class="mb-3">
-          Âge : {{ age }}
+          Âge : {{ formatAge }}
         </div>
       </div>
       <div class="col-6">
@@ -59,6 +60,37 @@
           Genre : {{ gender }}
         </div>
       </div>
+      <!-- Troisième  -->
+      <hr>
+      <h3>Ma fiche perso</h3>
+      <div class="row">
+        <div class="col-6">
+          <div class="mb-3">
+            Nom : {{ lastnamesent }}
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="mb-3">
+            Prénom : {{ firstnamesent }}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="mb-3">
+            Âge : {{ agesent }}
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="mb-3">
+            Genre : {{ gendersent }}
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-endu">
+        <input class="btn btn-outline-secondary" @click="send" type="submit">
+      </div>
+
     </div>
   </div>
 </template>
@@ -70,12 +102,28 @@ export default {
       lastname: '',
       lastnameDisplay: '',
       firstname: '',
-      age: '',
+      age: null,
       sex: 'default',
+      lastnamesent: '',
+      firstnamesent: '',
+      agesent: '',
+      gendersent: '',
     };
   },
-  methods: {},
+  methods: {
+      send(){
+        this.lastnamesent = this.lastname;
+        this.firstnamesent = this.firstname;
+        this.agesent = this.formatAge;
+        this.gendersent = this.gender;
+      }
+  },
   computed: {
+    formatAge(){
+      if(this.age){
+        return this.age + ' ans';
+      } return '';
+    },
     gender() {
       if (this.sex === 'male') {
         return 'un homme';
@@ -84,8 +132,12 @@ export default {
       } else if (this.sex === 'default') {
         return '';
       }
-      return 'autre';
+      return "Flaque d'eau";
     }
   }
+
+
 }
+
+
 </script>
