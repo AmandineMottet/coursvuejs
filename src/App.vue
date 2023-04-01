@@ -12,6 +12,7 @@
         <div class="mb-3">
           <label class="form-label" for="firstname">Prénom</label>
           <input v-model="firstname" class="form-control" type="text">
+
         </div>
       </div>
     </div>
