@@ -75,7 +75,7 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div v-if="display===true" class="row">
         <div class="col-6">
           <div class="mb-3">
             Âge : {{ agesent }}
@@ -88,7 +88,9 @@
         </div>
       </div>
       <div class="d-flex justify-content-endu">
-        <input class="btn btn-outline-secondary" @click="send" type="submit">
+        <input class="btn btn-outline-primary" @click="displayValues" type="submit">Envoyer
+        <input class="btn btn-outline-secondary" @click="displayValues" type="submit">
+
       </div>
 
     </div>
@@ -108,14 +110,16 @@ export default {
       firstnamesent: '',
       agesent: '',
       gendersent: '',
+      display: false,
     };
   },
   methods: {
-      send(){
+      displayValues(){
         this.lastnamesent = this.lastname;
         this.firstnamesent = this.firstname;
         this.agesent = this.formatAge;
         this.gendersent = this.gender;
+        this.display= true;
       }
   },
   computed: {
